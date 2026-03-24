@@ -1,0 +1,53 @@
+{% extends "layout.html" %}
+{% block content %}
+    <div class="register-section">
+        <form method="POST" action="">
+            {{ form.hidden_tag() }}
+            <fieldset class="form">
+                <p> Welcome Back </p>
+                <div class="form">
+                    {{ form.email.label(class="form-control-label") }}
+                    {% if form.email.errors %}
+                        {{ form.email(class="form-control is-invalid") }}
+                            <div class="invalid-feedback">
+                                {% for errors in form.email.errors %}
+                                    <span>{{ errors }}</span>
+                                {% endfor %}
+                            </div>
+                    {%else %}
+                        {{ form.email(class="form-control") }}
+                    {% endif %}
+                </div>
+                <div class="form">
+                    {{ form.password.label(class="form-control-label") }}
+                    {% if form.password.errors %}
+                        {{ form.password(class="form-control  bottom-margin is-invalid") }}
+                            <div class="invalid-feedback">
+                                {% for errors in form.password.errors %}
+                                    <span>{{ errors }}</span>
+                                {% endfor %}
+                            </div>
+                    {%else %}
+                        {{ form.password(class="form-control bottom-margin") }}
+                    {% endif %}
+                </div>
+                <div class="form-check">
+                    {{ form.remember(class="form-check-input") }}
+                    {{ form.remember.label(class= "form-check-label") }}
+                </div>
+                <div class="form">
+                    {{ form.submit(class=" btn") }}
+                </div>
+                <small class="forget bottom-margin">
+                    <a href="{{url_for('reset_request')}}">Forget Password ?</a>
+                </small>
+            </fieldset>
+            
+        </form>
+    </div>
+    <div class="form">
+        <small class="account">
+            Need An Account? <a  href="{{ url_for('register') }}">Sign  </a>
+        </small>
+    </div>
+{% endblock content %}

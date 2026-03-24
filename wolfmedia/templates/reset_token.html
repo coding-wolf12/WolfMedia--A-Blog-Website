@@ -1,0 +1,40 @@
+{% extends "layout.html" %}
+{% block content %}
+    <div class="register-section">
+        <form method="POST" action="">
+            {{ form.hidden_tag() }}
+            <fieldset class="form">
+                <p> Reset Password </p>
+                <div class="form">
+                    {{ form.password.label(class="form-control-label") }}
+                        {% if form.password.errors %}
+                            {{ form.password(class="form-control is-invalid") }}
+                                <div class="invalid-feedback">
+                                    {% for errors in form.password.errors %}
+                                        <span>{{ errors }}</span>
+                                    {% endfor %}
+                                </div>
+                        {%else %}
+                            {{ form.password(class="form-control") }}
+                        {% endif %}
+                </div>
+                <div class="form">
+                    {{ form.confirm_password.label(class="form-control-label") }}
+                        {% if form.confirm_password.errors %}
+                            {{ form.confirm_password(class="form-control is-invalid") }}
+                                <div class="invalid-feedback">
+                                    {% for errors in form.confirm_password.errors %}
+                                        <span>{{ errors }}</span>
+                                    {% endfor %}
+                                </div>
+                        {%else %}
+                            {{ form.confirm_password(class="form-control") }}
+                        {% endif %}
+                </div>
+                <div class="form">
+                    {{ form.submit(class=" btn-reset") }}
+                </div>
+            </fieldset>
+        </form>
+    </div>
+{% endblock content %}

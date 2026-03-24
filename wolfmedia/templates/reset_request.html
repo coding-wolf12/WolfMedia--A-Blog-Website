@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+{% block content %}
+    <div class="register-section">
+        <form method="POST" action="">
+            {{ form.hidden_tag() }}
+            <fieldset class="form">
+                <p> Reset Password </p>
+                <div class="form">
+                    {{ form.email.label(class="form-control-label") }}
+                        {% if form.email.errors %}
+                            {{ form.email(class="form-control is-invalid") }}
+                                <div class="invalid-feedback">
+                                    {% for errors in form.email.errors %}
+                                        <span>{{ errors }}</span>
+                                    {% endfor %}
+                                </div>
+                        {%else %}
+                            {{ form.email(class="form-control") }}
+                        {% endif %}
+                </div>
+                <div class="form">
+                    {{ form.submit(class=" btn-reset") }}
+                </div>
+            </fieldset>
+        </form>
+    </div>
+{% endblock content %}
